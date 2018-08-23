@@ -13,23 +13,19 @@ node {
             userRemoteConfigs: [[credentialsId: 'lauritsen', //remember to change credentials and url.
             url: 'git@github.com:lauritsen/ca-project.git']]])
     }
+}
 
+node('ubuntu-test') {
     stage('test') {
         sh 'docker run -p 5000:5000 henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
         archiveArtifacts 'log.txt'
     }
+}
 
+node {
     stage('Publish') {
         //This publishes the commit if the tests have run without errors
         pretestedIntegrationPublisher()
     }
 
-}
-
-node('ubuntu-host') {
-    stage('run test') {
-        sh 'docker run -p 5000:5000 henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
-        archiveArtifacts 'log.txt'
-
-    }
 }
