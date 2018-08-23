@@ -5,9 +5,6 @@ FROM ubuntu:latest
 
 # Copy files
 ADD . /usr/src/ca
-#
-#COPY requirements.txt /usr/src/app/
-#COPY run.py /usr/src/app/
 
 # Install python and pip
 RUN apt-get update && apt-get install -y \
