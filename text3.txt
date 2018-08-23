@@ -1,5 +1,0 @@
-t3
-l
-run
-la
-something
