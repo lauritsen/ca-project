@@ -12,13 +12,14 @@ node {
             submoduleCfg: [], 
             userRemoteConfigs: [[credentialsId: 'lauritsen', //remember to change credentials and url.
             url: 'git@github.com:lauritsen/ca-project.git']]])
+        
+        stash name: "python-run", includes: "/usr/src/ca/run.py"
     }
 }
 
 node('ubuntu-test') {
     stage('test') {
         sh 'docker run henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
-        stash name: "python-run", includes: "/usr/src/ca/run.py"
         stash name: "test-log", includes: "log.txt"
     }
 }
