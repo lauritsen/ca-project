@@ -27,8 +27,8 @@ node {
     stage('Publish') {
         unstash "test-log"
         archiveArtifacts 'log.txt'
-        unstash "python-run"
-        archiveArtifacts '/usr/src/ca/run.py'
+        //unstash "python-run"
+        //archiveArtifacts '/usr/src/ca/run.py'
         //This publishes the commit if the tests have run without errors
         pretestedIntegrationPublisher()
     }
