@@ -18,6 +18,7 @@ node {
 node('ubuntu-test') {
     stage('test') {
         sh 'docker run henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
+        stash name: "python-run" includes: "/usr/src/ca/run.py"
         stash name: "test-log", includes: "log.txt"
     }
 }
@@ -26,6 +27,8 @@ node {
     stage('Publish') {
         unstash "test-log"
         archiveArtifacts 'log.txt'
+        unstash "python-run"
+        archiveArtifacts '/usr/src/ca/run.py'
         //This publishes the commit if the tests have run without errors
         pretestedIntegrationPublisher()
     }
