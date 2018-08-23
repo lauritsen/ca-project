@@ -13,7 +13,7 @@ node {
             userRemoteConfigs: [[credentialsId: 'lauritsen', //remember to change credentials and url.
             url: 'git@github.com:lauritsen/ca-project.git']]])
         
-        stash name: "python-run", includes: "/usr/src/ca/run.py"
+        stash name: "python-run", includes: "**/run.py"
     }
 }
 
