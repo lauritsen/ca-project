@@ -1,0 +1,6 @@
+# Flask Framework
+Flask==0.12
+
+# Flask packages
+Flask-SQLAlchemy==2.1
+Flask-WTF==0.14.2
