@@ -17,7 +17,7 @@ node {
 
 node('ubuntu-test') {
     stage('test') {
-        sh 'docker run -p henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
+        sh 'docker run henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
         archiveArtifacts 'log.txt'
     }
 }
