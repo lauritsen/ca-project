@@ -1,0 +1,9 @@
+node{
+    stage('preparations'){
+        checkout scm
+    }
+
+    stage('build') {
+        sh 'docker-compose up -d'
+    }
+}
