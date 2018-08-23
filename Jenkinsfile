@@ -25,3 +25,11 @@ node {
     }
 
 }
+
+node('ubuntu-host') {
+    stage('run test') {
+        sh 'docker run -p 5000:5000 henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
+        archiveArtifacts 'log.txt'
+
+    }
+}
