@@ -15,7 +15,7 @@ node {
     }
 
     stage('test') {
-        sh 'docker run -p 5000:5000 ca-project-image python /usr/src/ca/tests.py > log.txt'
+        sh 'docker run -p 5000:5000 henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
         archiveArtifacts 'log.txt'
     }
 
