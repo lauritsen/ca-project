@@ -1,0 +1,8 @@
+version: '1.0'
+
+services:
+  ca_container:
+    image: ca-project-image
+    ports:
+      - 5000:5000
+      
