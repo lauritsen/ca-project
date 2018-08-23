@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   ca_container:
-    image: ca-project-image
+    image: henriklauritsen/ca-project:1.0.0
     ports:
       - 5000:5000
       
