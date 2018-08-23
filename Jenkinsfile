@@ -1,4 +1,5 @@
 node {
+    cleanWs()
     stage('Preparations') {
         //Using the Pretested integration plugin to checkout out any branch in the ready namespace
         checkout(
@@ -16,6 +17,7 @@ node {
 }
 
 node('ubuntu-test') {
+    cleanWs()
     stage('test') {
         sh 'docker run henriklauritsen/ca-project:1.0.0 python /usr/src/ca/tests.py > log.txt'
         stash name: "test-log", includes: "log.txt"
@@ -23,6 +25,7 @@ node('ubuntu-test') {
 }
 
 node {
+    cleanWs()
     stage('Publish') {
         unstash "test-log"
         archiveArtifacts 'log.txt'
